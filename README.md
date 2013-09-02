@@ -1,4 +1,4 @@
-# Maximum Awesome
+# Jay Taylor's Maximized Maximum Awesome
 
 Config files for vim and tmux, lovingly tended by a small subculture of
 peace-loving hippies. Built for Mac OS X.
@@ -35,6 +35,10 @@ peace-loving hippies. Built for Mac OS X.
 ## Install
 
     rake
+    
+    # If using OS-X:
+    test ! -d "${HOME}/Library/Fonts" && mkdir "${HOME}/Library/Fonts"
+    cp vim/fonts/* "${HOME}/Library/Fonts/"
 
 ## Contributing
 

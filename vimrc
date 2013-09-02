@@ -7,7 +7,7 @@ filetype plugin indent on
 set nocompatible                                             " get out of horrible vi-compatible mode
 
 " enable syntax highlighting
-syntax enable
+"syntax enable
 
 set autoindent
 set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`

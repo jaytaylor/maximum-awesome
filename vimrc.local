@@ -6,8 +6,93 @@ inoremap jj <ESC>
 " gui settings
 if (&t_Co == 256 || has('gui_running'))
   if ($TERM_PROGRAM == 'iTerm.app')
-    colorscheme solarized
+    "colorscheme solarized
+    colorscheme liquidcarbon
   else
-    colorscheme desert
+    "colorscheme desert
+    colorscheme liquidcarbon
   endif
 endif
+
+" http://superuser.com/questions/236550/how-to-toggle-showing-line-numbers-in-vim-using-a-single-key-p
+map <C-n> :set invnumber<CR>
+map <C-S-n> :set invnumber<CR>
+
+" Shift-K/J for pageup/pagedn
+noremap <S-K> <C-b>
+noremap <S-J> <C-f>
+
+" tab and shift-tag to indent/unindent mass blocks of text.
+map <Tab> >gb
+map <S-Tab> v<gv<ESC>0I<ESC>l
+"imap <S-Tab> <ESC>v<gv<ESC>0I
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+
+" Ctrl-e moves the cursor to the end of the current line (common shortcut in many terminals)
+map <C-e> <ESC>$
+imap <C-e> <ESC>$a
+
+" Ctrl-c toggles ignorecase
+nnoremap <C-c> :set invignorecase ignorecase?<CR>
+set ignorecase
+
+" Which characters to show (and how to show them) when I activate :set list
+set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,eol:$
+
+map <C-l> :set invlist<CR>
+
+" kill the remainder of the line
+map  <C-k> <ESC>d$
+imap <C-k> <ESC>d$$a
+
+" forward one word
+map  <A-f> <ESC>w
+imap <A-f> <ESC>wi
+
+" backwards one word
+map  <A-b> <ESC>b
+imap <A-b> <ESC>bi
+
+" go to the end of the line
+map  <C-e> <ESC>$
+imap <C-e> <ESC>$a
+
+" use ctrl-h/j/k/l to switch between splits
+noremap <c-j> <c-w>j
+noremap <c-k> <c-w>k
+noremap <c-l> <c-w>l
+noremap <c-h> <c-w>h
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*.class,*.pyc,*.jar,*.tar,*.bz2,*.bzip2,*.7z,*.pdf,*.doc  " MacOSX/Linux
+
+let g:Powerline_symbols='fancy'
+set guifont=Source\ Code\ Pro\ for\ Powerline
+set encoding=utf-8
+
+let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
+
+au BufReadPost *.sh set expandtab tabstop=4 softtabstop=4 shiftwidth=4
+au BufReadPost *.sh set autoindent smartindent et sts=4
+au BufReadPost *.sh inoremap # #
+au BufReadPost *.sh set expandtab tabstop=4 softtabstop=4 shiftwidth=4 autoindent smartindent cinwords=if,then,else,fi,for,while,do,done,function
+au BufReadPost *.sh inoremap # #
+
+au BufReadPost *.py set expandtab tabstop=4 softtabstop=4 shiftwidth=4
+au BufReadPost *.py set autoindent nosmartindent et sts=4
+au BufReadPost *.py set autoindent smartindent et sts=4 cinwords=class,def,elif,else,except,finally,for,if,try,while,self
+au BufReadPost *.py inoremap # #
+
+au BufReadPost *.html set expandtab tabstop=4 softtabstop=4 shiftwidth=4 autoindent smartindent
+
+au BufReadPost *.js set expandtab tabstop=4 softtabstop=4 shiftwidth=4
+au BufReadPost *.js set autoindent nosmartindent et sts=4
+
+au BufReadPost *.scala set expandtab tabstop=4 softtabstop=4 shiftwidth=4 autoindent nosmartindent
+
+au BufReadPost *.java set expandtab tabstop=4 softtabstop=4 shiftwidth=4
+au BufReadPost *.java set autoindent nosmartindent et sts=4
+
+au BufReadPost *.txt set expandtab tabstop=4 softtabstop=4 shiftwidth=4
+au BufReadPost *.txt set autoindent nosmartindent et sts=4
+

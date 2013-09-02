@@ -4,36 +4,60 @@ filetype off
 call pathogen#infect()
 filetype plugin indent on
 
-" don't bother with vi compatibility
-set nocompatible
+set nocompatible                                             " get out of horrible vi-compatible mode
 
 " enable syntax highlighting
 syntax enable
 
 set autoindent
 set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`
-set backspace=2                                              " Fix broken backspace in some setups
+set backspace=2                                              " make backspace work normal, fixes broken backspace in some setups
 set backupcopy=yes                                           " see :help crontab
+set cindent                                                  " do c-style indenting
 set clipboard=unnamed                                        " yank and paste with the system clipboard
 set directory-=.                                             " don't store swapfiles in the current directory
 set encoding=utf-8
 set expandtab                                                " expand tabs to spaces
+set ffs=unix,dos,mac                                         " support all three, in this order
+set fo=tcrqn                                                 " see help (complex)
+set history=2500
+set hlsearch                                                 " highlight search matches
+set incsearch                                                " do highlight as you type you search phrase
 set ignorecase                                               " case-insensitive search
 set incsearch                                                " search as you type
 set laststatus=2                                             " always show statusline
-set list                                                     " show trailing whitespace
-set listchars=tab:▸\ ,trail:▫
+"set list                                                     " show trailing whitespace
+"set listchars=tab:▸\ ,trail:▫
+"set listchars=
+set lz                                                       " do not redraw while running macros (much faster) (LazyRedraw)
+set mat=5                                                    " how many tenths of a second to blink matching brackets for
+set noerrorbells                                             " no noises
+set novisualbell                                             " don't blink
 set number                                                   " show line numbers
-set ruler                                                    " show where you are
+set report=0                                                 " tell us when anything is changed via :...
+set ruler                                                    " always show current positions along the bottom
 set scrolloff=3                                              " show context above/below cursorline
-set shiftwidth=2                                             " normal mode indentation commands use 2 spaces
+set shiftwidth=4                                             " normal mode indentation commands use 2 spaces
+set shortmess=atI                                            " shortens messages to avoid 'press a key' prompt
 set showcmd
+set showmode
+set showmatch                                                " show matching brackets
 set smartcase                                                " case-sensitive search if any caps
-set softtabstop=2                                            " insert mode tab and backspace use 2 spaces
-set tabstop=8                                                " actual tabs occupy 8 characters
+set smartindent
+set smarttab                                                 " use tabs at the start of a line, spaces elsewhere
+set so=10                                                    " keep 10 lines (top/bottom) for scope
+set softtabstop=4                                            " insert mode tab and backspace use 2 spaces
+set statusline=%<%{StatusFN(0)}%1*%{StatusFN(1)}%m%0*\ %F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [\%03.3b\x10]\ [\%02.2B\x16]\ [LEN=%L]\ %=%04l,%03v\ [%p%%]
+set tabstop=4                                                " actual tabs occupy 8 characters
 set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
 set wildmenu                                                 " show a navigable menu for tab completion
 set wildmode=longest,list,full
+
+function StatusFN(changed)
+  if &mod == a:changed | return expand('%') | else | return '' | endif
+endfunction
+
+highlight StatusLine term=bold,reverse cterm=bold,reverse ctermfg=0 ctermbg=4 guifg=#ffffff guibg=#000000
 
 " Enable basic mouse behavior such as resizing buffers.
 set mouse=a
@@ -112,3 +136,6 @@ if filereadable(expand("~/.vimrc.local"))
   " noremap! jj <ESC>
   source ~/.vimrc.local
 endif
+
+let g:airline_powerline_fonts = 1
+

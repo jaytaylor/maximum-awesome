@@ -109,3 +109,6 @@
 [submodule "vim/fonts"]
 	path = vim/fonts
 	url = https://github.com/Lokaltog/powerline-fonts.git
+[submodule "vim/bundle/vim-gocode"]
+	path = vim/bundle/vim-gocode
+	url = https://github.com/Blackrush/vim-gocode.git

@@ -3,16 +3,29 @@ set nocursorline " don't highlight current line
 " keyboard shortcuts
 inoremap jj <ESC>
 
+let g:Powerline_symbols='fancy'
+"set guifont=Source\ Code\ Pro\ for\ Powerline
+set guifont=Meslo\ LG\ S\ for\ Powerline
+set encoding=utf-8
+
 " gui settings
 if (&t_Co == 256 || has('gui_running'))
-  if ($TERM_PROGRAM == 'iTerm.app')
-    "colorscheme solarized
-    colorscheme liquidcarbon
-  else
-    "colorscheme desert
-    colorscheme liquidcarbon
-  endif
+    set guifont=Meslo\ LG\ S\ for\ Powerline:h12
+    if ($TERM_PROGRAM == 'iTerm.app')
+        "colorscheme solarized
+        "colorscheme liquidcarbon
+        colorscheme vividchalk
+    else
+        "colorscheme desert
+        "colorscheme liquidcarbon
+        colorscheme vividchalk
+    endif
 endif
+
+"if (&filetype == 'python' || &filetype == 'go')
+"    colorscheme vividchalk
+"endif
+"
 
 " http://superuser.com/questions/236550/how-to-toggle-showing-line-numbers-in-vim-using-a-single-key-p
 map <C-n> :set invnumber<CR>
@@ -65,10 +78,6 @@ noremap <c-l> <c-w>l
 noremap <c-h> <c-w>h
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*.class,*.pyc,*.jar,*.tar,*.bz2,*.bzip2,*.7z,*.pdf,*.doc  " MacOSX/Linux
-
-let g:Powerline_symbols='fancy'
-set guifont=Source\ Code\ Pro\ for\ Powerline
-set encoding=utf-8
 
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 
